@@ -1,4 +1,5 @@
 Changes
+cpanfile
 lib/File/Slurp/Remote.pm
 lib/File/Slurp/Remote/BrokenDNS.pm
 lib/File/Slurp/Remote/CanonicalHostnames.pm
