@@ -3,6 +3,7 @@
 on 'develop' => sub {
 	requires 'Devel::Cover';
 	requires 'Perl::Critic';
+	requires 'File::Slurp';
 	requires 'Test::Pod';
 	requires 'Test::Pod::Coverage';
 };
