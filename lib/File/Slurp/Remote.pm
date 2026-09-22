@@ -80,7 +80,7 @@ Copyright (C) 2011 Google Inc.
 This package may be used and redistributed under the terms of either
 the Artistic 2.0 or LGPL 2.1 license.
 
-=SUPPORT
+=head1 SUPPORT
 
 Module now maintained by
 Nigel Horne, C<< <njh at nigelhorne.com> >>
