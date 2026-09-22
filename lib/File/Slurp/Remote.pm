@@ -13,7 +13,7 @@ use File::Temp qw(tempdir);
 our @ISA = qw(Exporter);
 our @EXPORT = (@File::Slurp::EXPORT, qw(write_remote_file read_remote_file));
 
-our $VERSION = 0.43;
+our $VERSION = 0.45;
 
 my $tmpdir = tempdir(CLEANUP => 1);
 

@@ -6,6 +6,7 @@ WriteMakefile(
 	'NAME' => 'File-Slurp-Remote',
 	'ABSTRACT' => 'Easy read/write of remote files',
 	'AUTHOR'   => 'David Muir Sharnoff <muir@idiom.org>',
+	clean		=> { FILES => 'File-Slurp-Remote-*' },
 	'dist' => { COMPRESS=>"gzip", SUFFIX=>"gz" },
 	'PREREQ_PM'	=> {
 		'File::Temp'		=> 0,

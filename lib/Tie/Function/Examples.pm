@@ -10,7 +10,7 @@ use Carp;
 use strict;
 use warnings;
 
-our $VERSION = 0.43;
+our $VERSION = 0.45;
 
 use strict;
 
