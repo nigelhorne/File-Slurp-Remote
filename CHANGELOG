@@ -1,6 +1,7 @@
 
-= 2012/03/03 - 0.43
+= 2026/09/22 - 0.43
 
+New maintainer - nhorne@cpan.org
 Fix packaging error: CanonicalHostnames wasn't in the MANIFEST.
 
 = 2011/06/15 - 0.42
