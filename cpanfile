@@ -2,8 +2,8 @@
 
 on 'develop' => sub {
 	requires 'Devel::Cover';
-	requires 'Perl::Critic';
 	requires 'File::Slurp';
+	requires 'Perl::Critic';
 	requires 'Test::Pod';
 	requires 'Test::Pod::Coverage';
 };

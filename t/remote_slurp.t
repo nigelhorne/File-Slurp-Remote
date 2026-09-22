@@ -5,7 +5,6 @@ use warnings;
 use FindBin;
 use Test::More;
 use File::Temp;
-use File::Slurp;
 
 BEGIN { unshift(@INC, "$FindBin::Bin/../lib") unless $ENV{HARNESS_ACTIVE}; }
 	

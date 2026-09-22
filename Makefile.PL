@@ -9,7 +9,6 @@ WriteMakefile(
 	clean		=> { FILES => 'File-Slurp-Remote-*' },
 	'dist' => { COMPRESS=>"gzip", SUFFIX=>"gz" },
 	'PREREQ_PM'	=> {
-		'File::Slurp' => 0,
 		'File::Temp'	=> 0,
 		'Sys::Hostname::FQDN'	=> 0,
 		'File::Slurp'		=> 0,
