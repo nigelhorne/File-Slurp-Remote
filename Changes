@@ -1,5 +1,9 @@
 Revision history for File-Slurp-Remote
 
+0.46
+	[ Bug Fixes ]
+	- Fix module NAME field in Makefile.PL
+
 0.45 Tue Sep 22 11:39:52 AM EDT 2026
 	[ Bug Fixes ]
 	- New release, new number 0.45 fixes RT#131984 since something was up with 0.44

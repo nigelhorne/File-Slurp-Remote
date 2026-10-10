@@ -3,7 +3,7 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile( 
 	'VERSION_FROM' => 'lib/Tie/Function/Examples.pm',
-	'NAME' => 'File-Slurp-Remote',
+	'NAME' => 'File::Slurp::Remote',
 	'ABSTRACT' => 'Easy read/write of remote files',
 	'AUTHOR'   => 'David Muir Sharnoff <muir@idiom.org>',
 	clean		=> { FILES => 'File-Slurp-Remote-*' },
