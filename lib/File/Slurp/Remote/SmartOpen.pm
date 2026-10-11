@@ -11,7 +11,7 @@ use Carp qw(confess);
 our @EXPORT = qw(smartopen);
 our @ISA = qw(Exporter);
 our $ssh = "ssh -o StrictHostKeyChecking=no -o BatchMode=yes -o PasswordAuthentication=no";
-our $VERSION = 0.45;
+our $VERSION = 0.46;
 
 sub smartopen($\$$)
 {
