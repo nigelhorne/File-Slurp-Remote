@@ -1,5 +1,10 @@
 Revision history for File-Slurp-Remote
 
+0.47
+	[ Bug Fixes ]
+	- Add missing 'package File::Slurp::Remote' so PAUSE can index the distribution
+	- Take VERSION_FROM from lib/File/Slurp/Remote.pm
+
 0.46	Sat Oct 10 09:24:24 PM EDT 2026
 	[ Bug Fixes ]
 	- Fix module NAME field in Makefile.PL

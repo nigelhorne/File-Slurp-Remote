@@ -2,7 +2,7 @@
 use ExtUtils::MakeMaker;
 
 WriteMakefile( 
-	'VERSION_FROM' => 'lib/Tie/Function/Examples.pm',
+	'VERSION_FROM' => 'lib/File/Slurp/Remote.pm',
 	'NAME' => 'File::Slurp::Remote',
 	'ABSTRACT' => 'Easy read/write of remote files',
 	'AUTHOR'   => 'David Muir Sharnoff <muir@idiom.org>',
@@ -17,4 +17,3 @@ WriteMakefile(
 		'Tie::Hash'		=> 0,
 	},
 );
-
