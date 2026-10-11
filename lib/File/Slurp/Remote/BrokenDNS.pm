@@ -10,7 +10,7 @@ require Exporter;
 
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw($myfqdn %fqdnify);
-our $VERSION = 0.45;
+our $VERSION = 0.47;
 
 our %cache;
 our $myfqdn;

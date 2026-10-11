@@ -1,6 +1,6 @@
 Revision history for File-Slurp-Remote
 
-0.47
+0.47	Sat Oct 10 09:36:13 PM EDT 2026
 	[ Bug Fixes ]
 	- Add missing 'package File::Slurp::Remote' so PAUSE can index the distribution
 	- Take VERSION_FROM from lib/File/Slurp/Remote.pm
