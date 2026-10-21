@@ -11,38 +11,6 @@ our @EXPORT = (@File::Slurp::EXPORT, qw(write_remote_file read_remote_file));
 
 our $VERSION = '0.48';
 
-# Unused: retained so that code which sets it doesn't break
-our $scp = "scp -q -o StrictHostKeyChecking=no -o BatchMode=yes -o PasswordAuthentication=no";
-
-sub write_remote_file
-{
-	my $host = shift;
-	my $file = shift;
-
-	my $fd;
-	smartopen("$host:$file", $fd, "w");
-	(print $fd @_) or die "write to $host:$file: $!";
-	close($fd) or die "close $host:$file: $!";
-}
-
-sub read_remote_file
-{
-	my $host = shift;
-	my $file = shift;
-
-	my $fd;
-	smartopen("$host:$file", $fd, "r");
-	if (wantarray) {
-		return <$fd>;
-	} else {
-		return join('', <$fd>);
-	}
-}
-
-1;
-
-__END__
-
 =head1 NAME
 
  File::Slurp::Remote - read/write files on remote systems using ssh.
@@ -124,13 +92,47 @@ failure on the remote side is reported when the file is closed, so
 C<write_remote_file> dies but C<read_remote_file> may just return
 nothing.
 
+# Unused: retained so that code which sets it doesn't break
+our $scp = 'scp -q -o StrictHostKeyChecking=no -o BatchMode=yes -o PasswordAuthentication=no';
+
+=cut
+
+sub write_remote_file
+{
+	my $host = shift;
+	my $file = shift;
+
+	my $fd;
+	smartopen("$host:$file", $fd, 'w');
+	(print $fd @_) or die "write to $host:$file: $!";
+	close($fd) or die "close $host:$file: $!";
+}
+
+sub read_remote_file
+{
+	my $host = shift;
+	my $file = shift;
+
+	my $fd;
+	smartopen("$host:$file", $fd, 'r');
+	if (wantarray) {
+		return <$fd>;
+	} else {
+		return join('', <$fd>);
+	}
+}
+
+1;
+
+__END__
+
 =head1 LICENSE
 
 Copyright (C) 2008-2007,2008-2010 David Sharnoff.
 Copyright (C) 2007-2008 SearchMe Inc.
 Copyright (C) 2011 Google Inc.
 This package may be used and redistributed under the terms of either
-the Artistic 2.0 or LGPL 2.1 license.
+the GPL 2 license.
 
 =head1 AUTHOR
 
@@ -139,4 +141,4 @@ David Muir Sharnoff
 =head1 SUPPORT
 
 Module now maintained by
-Nigel Horne, C<< <nhorne at nigelhorne.com> >>
+Nigel Horne, C<< <njh at nigelhorne.com> >>

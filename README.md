@@ -1,10 +1,10 @@
-## Name
+# NAME
 
 ```
 File::Slurp::Remote - read/write files on remote systems using ssh.
 ```
 
-## Synopsis
+# SYNOPSIS
 
 ```perl
 use File::Slurp::Remote;
@@ -19,7 +19,7 @@ $whole_thing = read_remote_file($host, $file);
 $whole_thing = read_remote_file("$user\@$host", $file);
 ```
 
-## Description
+# DESCRIPTION
 
 This is similar to [File::Slurp](https://metacpan.org/pod/File%3A%3ASlurp), but it reads and writes files on
 remote systems using `ssh` to get there.
@@ -43,26 +43,26 @@ read and compressed as they are written.
 As well as the functions below, everything that [File::Slurp](https://metacpan.org/pod/File%3A%3ASlurp) exports
 by default (`read_file`, `write_file` and so on) is exported.
 
-## Functions
+# FUNCTIONS
 
-### Write\_Remote\_File($Host, $File, @Contents)
+## write\_remote\_file($host, $file, @contents)
 
 Writes `@contents` to `$file` on `$host`, replacing anything already
 there.  Returns nothing useful; it dies on failure.
 
-### Read\_Remote\_File($Host, $File)
+## read\_remote\_file($host, $file)
 
 In list context, returns the lines of `$file` on `$host`, each with
 its line ending.  In scalar context, returns the whole file as one
 string.
 
-#### Api Specification
+### API SPECIFICATION
 
-##### Input
+#### Input
 
 Both functions take positional arguments:
 
-```
+```perl
 $host     string, required.  A hostname, or user@host to log in as a
           different user.  The user name ends at the last '@'.
           Neither the user nor the host may be empty or begin with '-'.
@@ -71,15 +71,15 @@ $file     string, required.  The path on the remote system.
           with no separator added.
 ```
 
-##### Output
+#### Output
 
-```
+```perl
 read_remote_file, list context:   list of strings, one per line
 read_remote_file, scalar context: string
 write_remote_file:                nothing useful
 ```
 
-## Errors
+# ERRORS
 
 Both functions die if the host or user is invalid (see above), or if
 the file cannot be opened, written or closed.  When ssh is used, a
@@ -87,19 +87,22 @@ failure on the remote side is reported when the file is closed, so
 `write_remote_file` dies but `read_remote_file` may just return
 nothing.
 
-## License
+\# Unused: retained so that code which sets it doesn't break
+our $scp = 'scp -q -o StrictHostKeyChecking=no -o BatchMode=yes -o PasswordAuthentication=no';
+
+# LICENSE
 
 Copyright (C) 2008-2007,2008-2010 David Sharnoff.
 Copyright (C) 2007-2008 SearchMe Inc.
 Copyright (C) 2011 Google Inc.
 This package may be used and redistributed under the terms of either
-the Artistic 2.0 or LGPL 2.1 license.
+the GPL 2 license.
 
-## Author
+# AUTHOR
 
 David Muir Sharnoff
 
-## Support
+# SUPPORT
 
 Module now maintained by
-Nigel Horne, `<nhorne at cpan.org>`
+Nigel Horne, `<njh at nigelhorne.com>`

@@ -6,7 +6,7 @@ WriteMakefile(
 	'ABSTRACT' => 'Easy read/write of remote files',
 	'AUTHOR'   => [
 		'David Muir Sharnoff <muir@idiom.org>',
-		'Nigel Horne <nhorne@nigelhorne.com>',
+		'Nigel Horne <njh@nigelhorne.com>',
 	],
 	'LICENSE' => 'gpl_2',
 	'MIN_PERL_VERSION' => '5.008',
