@@ -31,8 +31,17 @@ sub smartopen($\$$)
 
 	my $fd = $$fdref;
 
-	if ($file =~ s/(.+):// && $fqdnify{$1} ne $myfqdn) {
-		my $host = $1;
+	my ($user, $host);
+	if ($file =~ s/(.+)://) {
+		$host = $1;
+		# Allow user@host, as scp does
+		($user, $host) = ($1, $2) if $host =~ /^([^@]+)@(.+)$/;
+		confess "smartopen: invalid host '$host'" if $host =~ /^-/;
+		confess "smartopen: invalid user '$user'" if defined($user) && $user =~ /^-/;
+	}
+
+	if (defined($host) && ($fqdnify{$host} ne $myfqdn || (defined($user) && $user ne _local_user()))) {
+		$host = "$user\@$host" if defined $user;
 		$unzip = "|$unzip" if $unzip;
 		$zip = "$zip|" if $zip;
 		if ($mode && $mode eq 'w') {
@@ -68,6 +77,16 @@ sub smartopen($\$$)
 	return $pid;
 }
 
+# The login name of the user running this process
+sub _local_user
+{
+	my $name = eval { scalar getpwuid($<) };
+	return $name if defined $name;
+	return $ENV{USER} if defined $ENV{USER};
+	return $ENV{USERNAME} if defined $ENV{USERNAME};
+	return '';
+}
+
 1;
 
 __END__
@@ -87,8 +106,13 @@ File::Slurp::Remote::SmartOpen - open files locally or remotely automatially
 This module provides one function: C<smartopen($file, $fd, $mode)>.
 The function looks at the filename.  If it has a colon in it, then
 it assumes that what comes before the colon is a hostname.  If that
-hostname is not the hostname of the local system, it uses ssh 
+hostname is not the hostname of the local system, it uses ssh
 to get to the remote system to open the file.
+
+As with C<scp>, the hostname may be given as C<user@host> to log in
+to the remote system as a different user.  If a user is given and it
+differs from the user running the program, ssh is used even if the
+host is the local system.
 
 If the filename ends with C<.gz> or C<.bz2>, then it will pipe the
 input (or output) though C<zcat> or C<bzcat> (C<gzip> or C<bzip2>) as
@@ -105,6 +129,8 @@ You can override that by redefining C<$File::Slurp::Remote::SmartOpen::ssh>.
 =head1 EXAMPLES
 
  smartopen("host1:/etc/passwd", my $fd, "r");
+
+ smartopen("fred\@host1:/home/fred/notes.txt", my $fd, "w");
 
 =head1 LICENSE
 

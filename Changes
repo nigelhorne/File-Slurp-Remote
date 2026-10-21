@@ -1,5 +1,10 @@
 Revision history for File-Slurp-Remote
 
+0.48
+	[ Enhancements ]
+	- Allow the remote user name to be given as user@host, as scp does
+	- Refuse hosts and user names beginning with '-' so they can't be taken as ssh options
+
 0.47	Sat Oct 10 09:36:13 PM EDT 2026
 	[ Bug Fixes ]
 	- Add missing 'package File::Slurp::Remote' so PAUSE can index the distribution

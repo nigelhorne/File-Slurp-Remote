@@ -61,10 +61,16 @@ __END__
 
  $whole_thing = read_remote_file($host, $file);
 
+ # Log in as a different user on the remote system
+ $whole_thing = read_remote_file("$user\@$host", $file);
+
 =head1 DESCRIPTION
 
 This is similar to L<File::Slurp>, but it reads and writes files on
 remote systems using C<ssh> to get there.
+
+If the remote user name is not the same as the local one, pass the
+host as C<user@host>, just as you would to C<scp>.
 
 It uses ssh/scp to get to the remote systems.  You can override the copy
 command by redefining C<$File::Slurp::Remote::scp>.  You can override
