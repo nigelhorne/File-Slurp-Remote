@@ -1,10 +1,12 @@
-#!/usr/bin/env perl
+#!perl -w
 
 use strict;
 use warnings;
-use Test::More;
 
-eval 'use Test::Pod 1.22';
-plan skip_all => 'Test::Pod 1.22 required for testing POD' if $@;
+use Test::DescribeMe qw(author);
+use Test::Most;
+use Test::Needs { 'Test::Pod' => '1.22' };
+
+Test::Pod->import();
 
 all_pod_files_ok();
