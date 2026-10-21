@@ -12,3 +12,5 @@ README.md
 t/remote_slurp.t
 t/remote_user.t
 t/tiefunc.t
+xt/pod-coverage.t
+xt/pod.t
